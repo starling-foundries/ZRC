@@ -106,13 +106,13 @@ transition TotalSupply()
 **BalanceOf()**
 
 ```ocaml
-(* Count the number of NFTs assigned to an owner *)
+(* Count all the tokens assigned to an address *)
 transition balanceOf(address: ByStr20)
 ```
 
 |  | Name | Type| Description
 |--|--|--|--|
-| @param | address | ByStr20 | Address of an owner. |
+| @param | address | ByStr20 | Address of a token owner. |
 
 |  | Name | Description
 |--|--|--|
@@ -120,21 +120,21 @@ transition balanceOf(address: ByStr20)
 
 <br/>
 
-**Mint()**
+**Allowance()**
 
 ```ocaml
-(* Mint new tokens *)
-transition mint(to: ByStr20, key: String)
+(* Returns the remaining number of tokens that `spender is allowed to spend *)
+transition Allowance(tokenOwner: ByStr20, spender: ByStr20)
 ```
 
 |  | Name | Type| Description
 |--|--|--|--|
-| @param | to | ByStr20 | Address of the token recipient. |
-| @param | key | String | Token key of the new token. |
+| @param | tokenOwner | ByStr20 | Address of the owner of the token. |
+| @param | spender | ByStr20 | Address of the spender of the token. |
 
 |  | Name | Description
 |--|--|--|
-| eventName | "Birth" | emit event if the call is successful. |
+| eventName | "Allowance" | emit event if the call is successful. |
 
 <br/>
 
