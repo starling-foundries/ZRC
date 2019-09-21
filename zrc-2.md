@@ -61,7 +61,6 @@ transition transfer(to: ByStr20, tokens: Uint128)
 
 |  | Name | Type| Description
 |--|--|--|--|
-| @param | from | ByStr20 | Current owner of the token. |
 | @param | to | ByStr20 | Recipient address of the token. |
 | @param | tokens | Uint128 | Amount of tokens to be transferred. |
 
@@ -71,20 +70,36 @@ transition transfer(to: ByStr20, tokens: Uint128)
 
 <br/>
 
-**OwnerOf()**
+**TransferFrom()**
 
 ```ocaml
-(* Get the owner of a particular tokenId *)
-transition ownerOf(tokenId: Uint256)
+(* Transfer the ownership of a given amount of tokens to another address *)
+transition TransferFrom(from: ByStr20, to: ByStr20, tokens: Uint128)
 ```
 
 |  | Name | Type| Description
 |--|--|--|--|
-| @param | tokenId | Uint256 | Id of a given token. |
+| @param | from | ByStr20 | Current owner of the token. |
+| @param | to | ByStr20 | Recipient address of the token. |
+| @param | tokens | Uint128 | Amount of tokens to be transferred. |
 
 |  | Name | Description
 |--|--|--|
-| eventName | "OwnerOf" | emit event if the call is successful. |
+| eventName | "TransferFromSuccess" | emit event if the call is successful. |
+| eventName | "TransferFromFailure" | emit event if the call is unsuccessful. |
+
+<br/>
+
+**TotalSupply()**
+
+```ocaml
+(* Returns the total supply of tokens *)
+transition TotalSupply()
+```
+
+|  | Name | Description
+|--|--|--|
+| eventName | "TotalSupply" | emit event if the call is successful. |
 
 <br/>
 
