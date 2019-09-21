@@ -28,7 +28,6 @@ let code_failure = Uint32 1
 let code_not_authorized = Uint32 2
 let code_not_found = Uint32 4
 let code_bad_request = Uint32 5
-let code_token_exists = Uint32 6
 let code_unexpected_error = Uint32 9
 let code_owner_not_right = Uint32 10
 ```
@@ -38,14 +37,14 @@ let code_owner_not_right = Uint32 10
 **Approve()**
 
 ```ocaml
-(* Approves an address to transfer the given token ID *)
-transition approve(to: ByStr20, tokenId: Uint256)
+(* Approves an address to transfer the given amount of tokens *)
+transition approve(to: ByStr20, tokens: Uint128)
 ```
 
 |  | Name | Type| Description
 |--|--|--|--|
 | @param | to | ByStr20 | Address to be approved for the given token id. |
-| @param | tokenId | Uint256 | Id of the token to be approved. |
+| @param | tokens | Uint128 | Amount of tokens to be approved. |
 
 |  | Name | Description
 |--|--|--|
@@ -53,36 +52,18 @@ transition approve(to: ByStr20, tokenId: Uint256)
   
 <br/>
 
-**SetApprovalForAll()**
-
-```ocaml
-(* Sets or unsets the approval of a given operator *)
-transition setApprovalForAll(to: ByStr20, approved: Bool)
-```
-
-|  | Name | Type| Description
-|--|--|--|--|
-| @param | to | ByStr20 | Address to be set or unset as operator. |
-| @param | approved | Bool | Status of the approval to be set. |
-
-|  | Name | Description
-|--|--|--|
-| eventName | "SetApprovalForAll" | emit event if the call is successful. |
-
-<br/>
-
-**TransferFrom()**
+**Transfer()**
 
 ```ocaml
 (* Transfer the ownership of a given token ID to another address *)
-transition transferFrom(from: ByStr20, to: ByStr20, tokenId: Uint256)
+transition transfer(to: ByStr20, tokens: Uint128)
 ```
 
 |  | Name | Type| Description
 |--|--|--|--|
 | @param | from | ByStr20 | Current owner of the token. |
 | @param | to | ByStr20 | Recipient address of the token. |
-| @param | tokenId | Uint256 | Id of the token to be transferred. |
+| @param | tokens | Uint128 | Amount of tokens to be transferred. |
 
 |  | Name | Description
 |--|--|--|
